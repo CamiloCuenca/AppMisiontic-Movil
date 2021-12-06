@@ -45,7 +45,8 @@ public class MensajesActivity extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref_estado = database.getReference("estado").child(user.getUid());
+    DatabaseReference ref_estado = database.getReference("Estado").child(user.getUid());
+    // se cambio estado por Estado
     DatabaseReference ref_chat = database.getReference("chats");
 
     EditText et_mensaje_txt;
@@ -82,9 +83,9 @@ public class MensajesActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mpref = getApplicationContext().getSharedPreferences("usuario_sp",MODE_PRIVATE);
         img_user = findViewById(R.id.img_usuario);
-        username = findViewById(R.id.tv_user);
-        ic_conectado = findViewById(R.id.icon_conectado);
-        ic_desconectado = findViewById(R.id.icon_desconectado);
+        username = findViewById(R.id.tv_userM);
+        ic_conectado = findViewById(R.id.icon_conectadoM);
+        ic_desconectado = findViewById(R.id.icon_desconectadoM);
 
         String usuario = getIntent().getExtras().getString("nombre");
         String foto = getIntent().getExtras().getString("img_user");
@@ -130,7 +131,7 @@ public class MensajesActivity extends AppCompatActivity {
         username.setText(usuario);
         Glide.with(this).load(foto).into(img_user);
 
-        final DatabaseReference ref = database.getReference("Estado").child(id_user_sp).child("chatcon");
+        final DatabaseReference ref = database.getReference("estado").child(id_user_sp).child("chatcon");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

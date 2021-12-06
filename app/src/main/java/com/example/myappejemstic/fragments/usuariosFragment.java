@@ -56,7 +56,7 @@ public class usuariosFragment extends Fragment {
         TextView tv_user = view.findViewById(R.id.tv_user);
         ImageView img_user = view.findViewById(R.id.img_user);
 
-        progressBar = view.findViewById(R.id.progressbar);
+        progressBar = view.findViewById(R.id.progressbarfrag);
 
 
         assert user != null;
@@ -79,7 +79,7 @@ public class usuariosFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref = database.getReference("users");
-        // se cambio de Users a user ____________________
+        // se cambio de Users a user ____________________ // oto cambio
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

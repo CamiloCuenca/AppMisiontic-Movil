@@ -40,10 +40,17 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.viewHo
 
     SharedPreferences mPref;
 
+
+
+
+
     public adapterUsuarios(List<Users> usersList, Context context) {
         this.usersList = usersList;
         this.context = context;
     }
+
+
+
 
     @NonNull
     @Override
@@ -53,6 +60,10 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.viewHo
         viewHolderAdapter holder = new viewHolderAdapter(v);
         return holder;
     }
+
+
+
+
 
     @Override
     public void onBindViewHolder(@NonNull viewHolderAdapter holder, int position) {
@@ -75,7 +86,10 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.viewHo
         ref_mis_botones.child(userss.getId()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String estado = snapshot.child("Estado").getValue(String.class);
+                String estado = snapshot.child("estado").getValue(String.class);
+                // se cambio Estado por estado // se volvio a cambiar Estado por estado
+
+
 
                 if(snapshot.exists()){
                     if(estado.equals("enviado")){
@@ -119,6 +133,9 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.viewHo
 
             }
         });
+
+
+
 
 
 
@@ -187,9 +204,15 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.viewHo
 
 
             }//Fin del oneClick
+
         });
 
-        holder.tengosolicitud.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+        holder.tengosolicitud.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
@@ -239,18 +262,18 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.viewHo
 
 
 
-                final DatabaseReference ref = database.getReference("Solicitudes").child(user.getUid()).child(userss.getId()).child("idechat");
+                final DatabaseReference ref = database.getReference("Solicitudes").child(user.getUid()).child(userss.getId()).child("idchat");
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String id_unico=snapshot.getValue(String.class);
+                        String id_unico =snapshot.getValue(String.class);
                         if(snapshot.exists()){
                             Intent intent=new Intent(v.getContext(), MensajesActivity.class);
                             intent.putExtra("nombre",userss.getNombre());
                             intent.putExtra("img_user",userss.getFoto());
                             intent.putExtra("id_user",userss.getId());
                             intent.putExtra("id_unico",id_unico);
-                            editor.putString("usuario_sp",userss.getId());
+                            editor.putString("usruaio_sp",userss.getId());
                             editor.apply();
                             v.getContext().startActivity(intent);
                         }
