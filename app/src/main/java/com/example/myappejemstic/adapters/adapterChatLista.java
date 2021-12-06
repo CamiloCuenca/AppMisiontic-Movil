@@ -93,7 +93,9 @@ public class adapterChatLista extends RecyclerView.Adapter<adapterChatLista.view
         Calendar c = Calendar.getInstance();
         final SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
 
-        DatabaseReference ref_Estado = database.getReference("estado").child(userss.getId());
+        DatabaseReference ref_Estado = database.getReference("Estado").child(userss.getId());
+
+        // se cambio estado por Estado
         ref_Estado.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

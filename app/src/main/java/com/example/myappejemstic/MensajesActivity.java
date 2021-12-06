@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myappejemstic.adapters.AdapterChats;
-import com.example.myappejemstic.fragments.chatsFragment;
+
 import com.example.myappejemstic.pojos.Chats;
 import com.example.myappejemstic.pojos.Estado;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,7 +47,8 @@ public class MensajesActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref_estado = database.getReference("Estado").child(user.getUid());
     // se cambio estado por Estado
-    DatabaseReference ref_chat = database.getReference("chats");
+    DatabaseReference ref_chat = database.getReference("Chats");
+    // se cambio chats por Chats
 
     EditText et_mensaje_txt;
     ImageButton btn_enviar_msj;
@@ -131,7 +132,8 @@ public class MensajesActivity extends AppCompatActivity {
         username.setText(usuario);
         Glide.with(this).load(foto).into(img_user);
 
-        final DatabaseReference ref = database.getReference("estado").child(id_user_sp).child("chatcon");
+        final DatabaseReference ref = database.getReference("Estado").child(id_user_sp).child("chatcon");
+        // se cambio estado por Estado
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

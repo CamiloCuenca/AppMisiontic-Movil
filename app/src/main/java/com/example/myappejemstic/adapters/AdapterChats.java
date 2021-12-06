@@ -93,7 +93,7 @@ public class AdapterChats extends RecyclerView.Adapter<AdapterChats.viewHolderAd
 
     }
 
-    public class viewHolderAdapter extends RecyclerView.ViewHolder {
+    public class viewHolderAdapter extends RecyclerView.ViewHolder{
         TextView tv_mensaje , tv_fecha;
         ImageView img_entregado , img_visto;
 

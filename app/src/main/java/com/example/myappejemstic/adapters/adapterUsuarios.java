@@ -273,7 +273,7 @@ public class adapterUsuarios extends RecyclerView.Adapter<adapterUsuarios.viewHo
                             intent.putExtra("img_user",userss.getFoto());
                             intent.putExtra("id_user",userss.getId());
                             intent.putExtra("id_unico",id_unico);
-                            editor.putString("usruaio_sp",userss.getId());
+                            editor.putString("usuario_sp",userss.getId());
                             editor.apply();
                             v.getContext().startActivity(intent);
                         }
